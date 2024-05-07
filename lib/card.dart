@@ -16,10 +16,10 @@ class _CardWidgetState extends State<CardWidget> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 30, right: 30, top: 30),
-      width: 300,
-      height: 345,
+      width: MediaQuery.sizeOf(context).width-1,
+      height:MediaQuery.sizeOf(context).height-220 ,
       decoration: BoxDecoration(
-        border: Border.all(color: black, width: 2),
+        border: Border.all(color: Colors.white, width: 2.5),
       ),
       child: widget.child,
     );

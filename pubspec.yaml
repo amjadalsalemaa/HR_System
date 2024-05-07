@@ -76,6 +76,12 @@ flutter:
     - images/log.png
     - images/admin.png
     - images/privilege.png
+    - images/remuneration.png
+    - images/bonus.png
+    - images/cutoff.png
+    - images/leave.png
+    - images/callcenter.png
+    - images/task.png
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

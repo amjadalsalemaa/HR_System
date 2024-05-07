@@ -12,7 +12,7 @@ class _amjadState extends State<amjad> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-    );
+        appBar: AppBar(),
+        );
   }
 }

@@ -2,18 +2,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
+import 'package:ultra/list.dart';
 import 'colors.dart';
-import 'homepage.dart';
+import "homepage.dart";
 
 class loginpage extends StatefulWidget {
   const loginpage({super.key});
+
 
   @override
   State<loginpage> createState() => _loginpageState();
 }
 
 class _loginpageState extends State<loginpage> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  var email = "admin";
+  var password = "@admin4HR";
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,50 +29,78 @@ class _loginpageState extends State<loginpage> {
       body:
       SingleChildScrollView(child:
       Container(
-        margin:EdgeInsets.only(left: 20,right: 20) ,
+        margin:const EdgeInsets.only(left: 20,right: 20) ,
         child: Column(
           children: [
-            SizedBox(height: 60,),
+            const SizedBox(height: 60,),
             Image.asset('images/ultra.png',width: 200,height: 200,),
-            SizedBox(height: 50,),
-            Text('User Name',style: TextStyle(color: whithe,fontSize:30,fontWeight: FontWeight.bold),),
-            SizedBox(height: 15,),
+            const SizedBox(height: 50,),
+            const Text('User Name',style: TextStyle(color: whithe,fontSize:30,fontWeight: FontWeight.w800,fontStyle: FontStyle.italic),),
+            const SizedBox(height: 15,),
             TextFormField(
-              decoration: InputDecoration(fillColor: whithe,
+              controller: emailController,
+              keyboardType: TextInputType.emailAddress,
+              validator: (value){
+                if (value !=null && 
+                value.isNotEmpty &&
+                value .contains('admin')){
+                  return null;
+                }
+                return 'Email is not valid';
+              },
+              decoration: const InputDecoration(fillColor: whithe,
                 filled: true,
-                contentPadding: const EdgeInsets.only(top: 10, left: 10),
-                helperStyle: const TextStyle(color: Colors.grey),
+                contentPadding: EdgeInsets.only(top: 10, left: 10),
+                helperStyle: TextStyle(color: Colors.grey),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.black, width: 2),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: whithe, width: 2),
+                  borderSide: BorderSide(color: whithe, width: 2),
                 ),
               ),
 
             ),
-            SizedBox(height: 30,),
-            Text('Password',style: TextStyle(color: whithe,fontSize:30,fontWeight: FontWeight.bold),),
-            SizedBox(height: 15,),
+            const SizedBox(height: 30,),
+            const Text('Password',style: TextStyle(color: whithe,fontSize:30,fontWeight: FontWeight.w800,fontStyle: FontStyle.italic),),
+            const SizedBox(height: 15,),
             TextFormField(
-              decoration: InputDecoration(fillColor: whithe,
+              obscureText: true,
+              controller: passwordController,
+              keyboardType: TextInputType.visiblePassword,
+              validator: (value){
+                if (value != null && value.length >= 6){
+                  return null ;
+                }
+                return 'password is not strong';
+              },
+              decoration: const InputDecoration(fillColor: whithe,
                 filled: true,
-                contentPadding: const EdgeInsets.only(top: 10, left: 10),
-                helperStyle: const TextStyle(color: Colors.grey),
+                contentPadding: EdgeInsets.only(top: 10, left: 10),
+                helperStyle: TextStyle(color: Colors.grey),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.black, width: 2),
+                  borderSide: BorderSide(color: Colors.black, width: 2),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: whithe, width: 2),
+                  borderSide: BorderSide(color: whithe, width: 2),
                 ),
               ),
             ),
-            SizedBox(height: 12,),
+            const SizedBox(height: 12,),
             MaterialButton(
               onPressed: () {
-                Get.to(() => const homepage(),
-                    transition: Transition.fadeIn,
-                    duration: const Duration(milliseconds: 500));
+                if (emailController.text == email && passwordController.text == password) {
+                  Get.to(() =>  homepage(),
+                      transition: Transition.fadeIn,
+                      duration: const Duration(milliseconds: 500));
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    backgroundColor:kMaincolor,
+                    content: Text(
+                      'Invalid user name or password'
+                    ),
+                  ));
+                }
               },
               child: Container(
                 alignment: Alignment.center,
@@ -75,14 +111,13 @@ class _loginpageState extends State<loginpage> {
                     borderRadius: BorderRadius.circular(7)),
                 child: const Text(
                   'Login',
-                  style: TextStyle(color: black, fontSize: 25),
+                  style: TextStyle(color: black, fontSize: 25,fontStyle: FontStyle.italic),
+
                 ),
               ),
             ),
-            SizedBox(height: 100,),
-            Text('WWW.ULTRAWARES.COM',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold),),
-
-
+            const SizedBox(height: 190,),
+            const Text('WWW.ULTRAWARES.COM',style: TextStyle(color: Colors.grey,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,fontSize: 20),),
           ],),)
       ),
     );

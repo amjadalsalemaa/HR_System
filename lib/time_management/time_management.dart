@@ -172,10 +172,6 @@ class _time_managementState extends State<time_management> {
               ],),
           ),
         ],)),
-
-
-
-
       ],),
     );
   }

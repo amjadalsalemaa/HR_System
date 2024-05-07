@@ -113,11 +113,6 @@ class _system_administrationState extends State<system_administration> {
               ],),
           ),
         ],)),
-
-
-
-
-
       ],),
     );
   }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'card.dart';
 import 'colors.dart';
 
+// ignore: camel_case_types
 class list extends StatefulWidget {
   const list({super.key});
 
@@ -11,6 +12,7 @@ class list extends StatefulWidget {
   State<list> createState() => _listState();
 }
 
+// ignore: camel_case_types
 class _listState extends State<list> {
   @override
   Widget build(BuildContext context) {
@@ -118,10 +120,6 @@ class _listState extends State<list> {
             ],),
         ),
       ],)),
-
-
-
-
-    ],);
+      ],);
   }
 }
